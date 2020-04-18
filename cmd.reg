@@ -1,0 +1,76 @@
+Windows Registry Editor Version 5.00
+
+; Created by: Huan Yang
+
+; Created on: Nov 9th 2018
+
+; Desktop or backgrouod Right click menu
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\cmd_here]
+
+@="Open cmd"
+
+"Icon"="cmd.exe"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\cmd_here\command]
+
+@="cmd.exe /s /k pushd \"%V\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\cmd_here_admin]
+
+@="Open cmd(admin)"
+
+"Icon"="cmd.exe"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\cmd_here_admin\command]
+
+@="PowerShell -windowstyle hidden -Command \"Start-Process cmd -ArgumentList '/s,/k,pushd,%V' -Verb RunAs\""
+
+
+
+; Created by: Huan Yang
+
+; Created on: Nov 9th 2018
+
+; Folder or Driver Right click menu
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\cmdPrompt]
+
+@="Open cmd"
+
+"Icon"="cmd.exe"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\cmdPrompt\command]
+
+@="cmd.exe \"cd %1\"  /s /k pushd \"%V\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\cmdPrompt_admin]
+
+@="Open cmd(admin)"
+
+"Icon"="cmd.exe"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell\cmdPrompt_admin\command]
+
+@="PowerShell -windowstyle hidden -Command \"Start-Process cmd -ArgumentList '\"cd %1\" /s,/k,pushd,%V' -Verb RunAs\""
+
+
+
+; Created by: Huan Yang
+
+; Created on: Nov 9th 2018
+
+; Remark: Directory, Drive, Folder
+
+;HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\shell
+
+;HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell
+
+;HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Drive\shell
+
+;HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Folder\shell
+
+作者：HappySheep欢乐小羊
+链接：https://www.jianshu.com/p/0c21406eb866
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
