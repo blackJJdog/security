@@ -1,0 +1,5 @@
+#!/bin/bash
+/home/kali/tools/Osmedeus/plugins/massdns/bin/massdns -r /home/kali/tools/Osmedeus/plugins/massdns/lists/resolvers.txt -q -t A -o S $1 -w massdns.raw
+cat massdns.raw | grep -e ' A ' |  cut -d 'A' -f 3 | tr -d ' ' > massdns.txt
+cat massdns.txt | sort -V | uniq > final-ips.txt
+rm massdns.txt
