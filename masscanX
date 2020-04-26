@@ -1,0 +1,8 @@
+#!/bin/bash
+masscan -p1-65535 --rate=1000 -iL $1 -oX masscan.xml
+open_ports=$(cat masscan.xml | grep portid | cut -d "\"" -f 10 | sort -n | uniq | paste -sd,)
+echo $open_ports%                                                                                                                                                                         cat ~/.local/bin/masscanD
+#!/bin/bash
+masscan -p1-65535 --rate=1000 $1 -oX masscan.xml
+open_ports=$(cat masscan.xml | grep portid | cut -d "\"" -f 10 | sort -n | uniq | paste -sd,)
+echo $open_ports% 
