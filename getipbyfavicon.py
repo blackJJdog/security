@@ -1,26 +1,26 @@
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
-import mmh3
-import requests
-import argparse
-from urlparse import urlparse
-from shodan import Shodan
-import base64
-
+#!/usr/bin/env python                                                                                                                                                                                                                                                                                                                        
+# -*- coding: UTF-8 -*-                                                                                                                                                                                                                                                                                                                      
+import mmh3                                                                                                                                                                                                                                                                                                                                  
+import requests                                                                                                                                                                                                                                                                                                                              
+import argparse                                                                                                                                                                                                                                                                                                                              
+from urlparse import urlparse                                                                                                                                                                                                                                                                                                                
+from shodan import Shodan                                                                                                                                                                                                                                                                                                                    
+import base64                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                             
 
 api = Shodan('YOUR-SHODAN-API-KEY')
 
 LOGO = R"""
-  ▄████ ▓█████▄▄▄█████▓ ██▓ ██▓███   ▄▄▄▄ ▓██   ██▓ ██▓ ▄████▄   ▒█████  
+  ▄████ ▓█████▄▄▄█████▓ ██▓ ██▓███   ▄▄▄▄ ▓██   ██▓ ██▓ ▄████▄   ▒█████
  ██▒ ▀█▒▓█   ▀▓  ██▒ ▓▒▓██▒▓██░  ██▒▓█████▄▒██  ██▒▓██▒▒██▀ ▀█  ▒██▒  ██▒
 ▒██░▄▄▄░▒███  ▒ ▓██░ ▒░▒██▒▓██░ ██▓▒▒██▒ ▄██▒██ ██░▒██▒▒▓█    ▄ ▒██░  ██▒
 ░▓█  ██▓▒▓█  ▄░ ▓██▓ ░ ░██░▒██▄█▓▒ ▒▒██░█▀  ░ ▐██▓░░██░▒▓▓▄ ▄██▒▒██   ██░
 ░▒▓███▀▒░▒████▒ ▒██▒ ░ ░██░▒██▒ ░  ░░▓█  ▀█▓░ ██▒▓░░██░▒ ▓███▀ ░░ ████▓▒░
- ░▒   ▒ ░░ ▒░ ░ ▒ ░░   ░▓  ▒▓▒░ ░  ░░▒▓███▀▒ ██▒▒▒ ░▓  ░ ░▒ ▒  ░░ ▒░▒░▒░ 
-  ░   ░  ░ ░  ░   ░     ▒ ░░▒ ░     ▒░▒   ░▓██ ░▒░  ▒ ░  ░  ▒     ░ ▒ ▒░ 
-░ ░   ░    ░    ░       ▒ ░░░        ░    ░▒ ▒ ░░   ▒ ░░        ░ ░ ░ ▒  
-      ░    ░  ░         ░            ░     ░ ░      ░  ░ ░          ░ ░  
-                                          ░░ ░         ░                                                          
+ ░▒   ▒ ░░ ▒░ ░ ▒ ░░   ░▓  ▒▓▒░ ░  ░░▒▓███▀▒ ██▒▒▒ ░▓  ░ ░▒ ▒  ░░ ▒░▒░▒░
+  ░   ░  ░ ░  ░   ░     ▒ ░░▒ ░     ▒░▒   ░▓██ ░▒░  ▒ ░  ░  ▒     ░ ▒ ▒░
+░ ░   ░    ░    ░       ▒ ░░░        ░    ░▒ ▒ ░░   ▒ ░░        ░ ░ ░ ▒
+      ░    ░  ░         ░            ░     ░ ░      ░  ░ ░          ░ ░
+                                          ░░ ░         ░
 """
 
 
@@ -49,6 +49,7 @@ def queryshodan(url):
         url = url+"/favicon.ico"
     try:
         hash = getfaviconhash(url)
+        print("http.favicon.hash:{}".format(hash))
         if hash:
             query = "http.favicon.hash:{}".format(hash)
             count = api.count(query)['total']
